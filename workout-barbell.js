@@ -76,10 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createBarSection(barColor) {
     const section = document.createElement('span');
-    section.textContent = '==========';
-    section.style.color = barColor;
-    section.style.margin = '0 4px';
-    section.style.fontWeight = 'bold';
+    section.className = 'barbell-line';
+    section.style.backgroundColor = barColor;
+    section.style.borderColor = barColor;
     return section;
   }
 
@@ -93,10 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
     barbellContainer.style.alignItems = 'center';
     barbellContainer.style.justifyContent = 'center';
     barbellContainer.style.flexWrap = 'nowrap';
-    barbellContainer.style.margin = '8px 0';
-    barbellContainer.style.flexShrink = '0';
-    barbellContainer.style.overflowX = 'auto';
-    barbellContainer.style.padding = '4px';
+    barbellContainer.style.margin = '0 auto';
+    barbellContainer.style.overflowX = 'hidden';
+    barbellContainer.style.padding = '5px 0';
+    barbellContainer.style.maxWidth = '100%';
 
     const plateList = calculatePlateBreakdown(platesPerSide);
 
@@ -126,15 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add weights display
     const weightsText = document.createElement('div');
     weightsText.style.textAlign = 'center';
-    weightsText.style.fontSize = '16px';
-    weightsText.style.fontWeight = 'bold';
+    weightsText.style.fontSize = '14px';
     weightsText.style.marginBottom = '5px';
-//     weightsText.innerHTML = `
-//       Per Side: ${platesPerSide.toFixed(1)}kg
-//     `;
+    weightsText.innerHTML = `
+      ${platesPerSide.toFixed(1)} kg per side
+    `;
 
     exerciseDiv.appendChild(barbellContainer);
-//     exerciseDiv.appendChild(weightsText);
+    exerciseDiv.appendChild(weightsText);
   }
 
   function renderAllBarbells() {
