@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     plateDiv.style.fontWeight = 'bold';
     plateDiv.style.textShadow = '0 1px 1px rgba(0,0,0,0.4)';
     plateDiv.style.minWidth = plate.weight < 5 ? '20px' : '30px';
-    plateDiv.style.padding = plate.weight < 5 ? '2px 4px' : '4px 8px';
+    plateDiv.style.padding = plate.weight < 5 ? '6px 2px' : '12px 0px';
     plateDiv.style.fontSize = plate.weight < 5 ? '0.7em' : '0.9em';
     return plateDiv;
   }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bar.style.backgroundColor = barColor;
     bar.style.color = (barColor === 'white' || barColor === 'yellow') ? 'black' : 'white';
     bar.style.padding = '6px 12px';
-    bar.style.margin = '15px 8px';
+    bar.style.margin = '15px 0px';
     bar.style.borderRadius = '6px';
     bar.style.fontWeight = 'bold';
     bar.style.textAlign = 'center';
