@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Mobile basic styles -->
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 8px 15px;
+      font-size: 14px;
+      color: #555;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      color: #242424;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+
+    .info-left {
+      text-align: left;
+      flex: 1;
+    }
+
+    .info-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .info-right {
+      text-align: right;
+      flex: 1;
+    }
+
+    #barWeightSelection {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+    #barWeightSelection label {
+      margin: 0 10px;
+    }
+    #barWeightSelection input[type="radio"] {
+      margin-right: 5px;
+    }
+  </style>
+
+  <script src="./workout-barbell.js" defer></script>
+</head>
+
+<body>
+
+<div class="top-row">
+  <div>Block: 2</div>
+  <div>Week: 2</div>
+  <div>Day: 1</div>
+</div>
+
+<div id="barWeightSelection">
+  <span style="font-size: 16px; margin-right: 10px;">Bar:</span>
+  
+  <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+    <input type="radio" name="barWeight" value="10" data-color="green" style="margin-right: 5px;">
+    <span style="background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;">10</span>
+  </label>
+  
+  <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+    <input type="radio" name="barWeight" value="15" data-color="yellow" style="margin-right: 5px;">
+    <span style="background-color: gold; color: black; padding: 4px 8px; border-radius: 4px; font-weight: bold;">15</span>
+  </label>
+  
+  <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+    <input type="radio" name="barWeight" value="20" data-color="blue" style="margin-right: 5px;" checked>
+    <span style="background-color: blue; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;">20</span>
+  </label>
+</div>
+
+<!-- Primary Section -->
+<div class="css-175oi2r" style="text-align: center; font-weight: bold; font-size: 22px; margin: 15px;">Primary</div>
+
+
+<!-- Squat 44kg -->
+<div class="css-175oi2r">
+  <div class="css-175oi2r">
+    <div class="css-175oi2r" style="background-color: rgb(255, 255, 255); border-width: 1px; padding: 15px; margin: 15px 15px 0px; border-color: rgb(225, 232, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px;">
+      <div class="css-175oi2r" style="background-color: rgba(0, 0, 0, 0);">
+        
+        <div dir="auto" class="css-1rynq56" data-testid="cardTitle" style="color: rgb(67, 72, 77); font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px;">Squat</div>
+        <div class="css-175oi2r r-18u37iz info-row">
+          <div dir="auto" class="info-left" style="color: rgb(36, 36, 36); font-size: 20px;">Sets: 1</div>
+          <div dir="auto" class="info-center" style="color: rgb(36, 36, 36); font-size: 20px;">Reps: 5</div>
+          <div dir="auto" class="info-right" style="color: rgb(36, 36, 36); font-size: 20px;">44 kgs</div>
+        </div>
+        <div class="barbellWorkout" data-exercise="Squat" data-weight="44"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 sec pause Squat 64kg -->
+<div class="css-175oi2r">
+  <div class="css-175oi2r">
+    <div class="css-175oi2r" style="background-color: rgb(255, 255, 255); border-width: 1px; padding: 15px; margin: 15px 15px 0px; border-color: rgb(225, 232, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px;">
+      <div class="css-175oi2r" style="background-color: rgba(0, 0, 0, 0);">
+        
+        <div dir="auto" class="css-1rynq56" data-testid="cardTitle" style="color: rgb(67, 72, 77); font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px;">3 sec pause Squat</div>
+        <div class="css-175oi2r r-18u37iz info-row">
+          <div dir="auto" class="info-left" style="color: rgb(36, 36, 36); font-size: 20px;">Sets: 1</div>
+          <div dir="auto" class="info-center" style="color: rgb(36, 36, 36); font-size: 20px;">Reps: 5</div>
+          <div dir="auto" class="info-right" style="color: rgb(36, 36, 36); font-size: 20px;">64 kgs</div>
+        </div>
+        <div class="barbellWorkout" data-exercise="3 sec pause Squat" data-weight="64"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 sec pause Squat 68kg -->
+<div class="css-175oi2r">
+  <div class="css-175oi2r">
+    <div class="css-175oi2r" style="background-color: rgb(255, 255, 255); border-width: 1px; padding: 15px; margin: 15px 15px 0px; border-color: rgb(225, 232, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px;">
+      <div class="css-175oi2r" style="background-color: rgba(0, 0, 0, 0);">
+        
+        <div dir="auto" class="css-1rynq56" data-testid="cardTitle" style="color: rgb(67, 72, 77); font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px;">3 sec pause Squat</div>
+        <div class="css-175oi2r r-18u37iz info-row">
+          <div dir="auto" class="info-left" style="color: rgb(36, 36, 36); font-size: 20px;">Sets: 1</div>
+          <div dir="auto" class="info-center" style="color: rgb(36, 36, 36); font-size: 20px;">Reps: 5</div>
+          <div dir="auto" class="info-right" style="color: rgb(36, 36, 36); font-size: 20px;">68 kgs</div>
+        </div>
+        <div class="barbellWorkout" data-exercise="3 sec pause Squat" data-weight="68"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 sec pause Squat 69kg -->
+<div class="css-175oi2r">
+  <div class="css-175oi2r">
+    <div class="css-175oi2r" style="background-color: rgb(255, 255, 255); border-width: 1px; padding: 15px; margin: 15px 15px 0px; border-color: rgb(225, 232, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px;">
+      <div class="css-175oi2r" style="background-color: rgba(0, 0, 0, 0);">
+        
+        <div dir="auto" class="css-1rynq56" data-testid="cardTitle" style="color: rgb(67, 72, 77); font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px;">3 sec pause Squat</div>
+        <div class="css-175oi2r r-18u37iz info-row">
+          <div dir="auto" class="info-left" style="color: rgb(36, 36, 36); font-size: 20px;">Sets: 1</div>
+          <div dir="auto" class="info-center" style="color: rgb(36, 36, 36); font-size: 20px;">Reps: 3</div>
+          <div dir="auto" class="info-right" style="color: rgb(36, 36, 36); font-size: 20px;">69 kgs</div>
+        </div>
+        <div class="barbellWorkout" data-exercise="3 sec pause Squat" data-weight="69"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 sec pause Squat 73kg -->
+<div class="css-175oi2r">
+  <div class="css-175oi2r">
+    <div class="css-175oi2r" style="background-color: rgb(255, 255, 255); border-width: 1px; padding: 15px; margin: 15px 15px 0px; border-color: rgb(225, 232, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px;">
+      <div class="css-175oi2r" style="background-color: rgba(0, 0, 0, 0);">
+        
+        <div dir="auto" class="css-1rynq56" data-testid="cardTitle" style="color: rgb(67, 72, 77); font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 15px;">3 sec pause Squat</div>
+        <div class="css-175oi2r r-18u37iz info-row">
+          <div dir="auto" class="info-left" style="color: rgb(36, 36, 36); font-size: 20px;">Sets: 1</div>
+          <div dir="auto" class="info-center" style="color: rgb(36, 36, 36); font-size: 20px;">Reps: 3</div>
+          <div dir="auto" class="info-right" style="color: rgb(36, 36, 36); font-size: 20px;">73 kgs</div>
+        </div>
+        <div class="barbellWorkout" data-exercise="3 sec pause Squat" data-weight="73"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section-title">Accessories</div>
+
+</body>
+</html>
+
