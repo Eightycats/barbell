@@ -47,7 +47,6 @@
 <script>
   function updateBarbellDisplay() {
     const total = parseFloat(document.getElementById('totalWeight').value);
-    console.log(total);
     const bar = document.querySelector('input[name="barWeight"]:checked');
     const display = document.querySelector('.barbellWorkout');
 
@@ -55,10 +54,8 @@
         return;
     }
 
-console.log(typeof renderAllBarbells);
     display.dataset.weight = total;
     if (typeof renderAllBarbells === 'function') {
-    console.log('renderAllBarbells');
       renderAllBarbells();
     }
   }
