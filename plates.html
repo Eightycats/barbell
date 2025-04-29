@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barbell Plate Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="barbell.css">
+  <script src="./barbell.js" defer></script>
+</head>
+<body>
+
+  <h2 align="center">Plate Calculator</h2>
+
+    <div id="barWeightSelection">
+      <span style="font-size: 16px; margin-right: 10px;">Bar:</span>
+      
+      <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+        <input type="radio" name="barWeight" value="10" data-color="green" style="margin-right: 5px;">
+        <span style="background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;">10</span>
+      </label>
+      
+      <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+        <input type="radio" name="barWeight" value="15" data-color="yellow" style="margin-right: 5px;">
+        <span style="background-color: yellow; color: black; padding: 4px 8px; border-radius: 4px; font-weight: bold;">15</span>
+      </label>
+      
+      <label style="display: inline-flex; align-items: center; margin: 0 5px;">
+        <input type="radio" name="barWeight" value="20" data-color="blue" style="margin-right: 5px;" checked>
+        <span style="background-color: blue; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;">20</span>
+      </label>
+    </div>
+    
+
+    <div class="info-row">
+        <div class="info-center form-group">
+            <label for="totalWeight">Total Weight (kg):</label><br>
+            <input type="number" id="totalWeight" value="100" min="0" step="1">
+        </div>    
+    </div>
+        
+
+    <div class="barbell-display">
+        <div class="barbellWorkout" data-weight="100"></div>
+    </div>
+
+<script>
+  function updateBarbellDisplay() {
+    const total = parseFloat(document.getElementById('totalWeight').value);
+    console.log(total);
+    const bar = document.querySelector('input[name="barWeight"]:checked');
+    const display = document.querySelector('.barbellWorkout');
+
+    if (!bar || isNaN(total) || total <= 0) {
+        return;
+    }
+
+console.log(typeof renderAllBarbells);
+    display.dataset.weight = total;
+    if (typeof renderAllBarbells === 'function') {
+    console.log('renderAllBarbells');
+      renderAllBarbells();
+    }
+  }
+
+  // Watch for changes in input or bar weight radio buttons
+  document.getElementById('totalWeight').addEventListener('input', updateBarbellDisplay);
+
+  document.querySelectorAll('input[name="barWeight"]').forEach(radio => {
+    radio.addEventListener('change', updateBarbellDisplay);
+  });
+
+  // Initial render
+  updateBarbellDisplay();
+</script>
+
+
+</body>
+</html>

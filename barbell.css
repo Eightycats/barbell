@@ -1,0 +1,65 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #242424;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.info-left {
+    text-align: left;
+    flex: 1;
+}
+
+.info-center {
+    text-align: center;
+    flex: 1;
+}
+
+.info-right {
+    text-align: right;
+    flex: 1;
+}
+
+.barbell-line {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 5px;
+    background-color: #ccc;
+    margin: 0 5px;
+    border-radius: 2px;
+    min-width: 10px;
+    max-width: 150px;
+}
+
+#barWeightSelection {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+#barWeightSelection label {
+    margin: 0 10px;
+}
+#barWeightSelection input[type="radio"] {
+    margin-right: 5px;
+}

@@ -1,4 +1,4 @@
-// workout-barbell.js
+// barbell.js
 
 document.addEventListener('DOMContentLoaded', () => {
   const plateColorMap = {
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function buildBarbell(exerciseDiv, totalWeight) {
     const { weight: barWeight, color: barColor } = getSelectedBarWeightInfo();
-    const platesPerSideValue = (totalWeight - barWeight) / 2;
-    const platesPerSide = platesPerSideValue > 0 ? platesPerSideValue : 0;
+    const platesWeight = (totalWeight - barWeight) / 2;
+    const weightPerSide = platesWeight > 0 ? platesWeight : 0;
 
     const barbellContainer = document.createElement('div');
     barbellContainer.style.display = 'flex';
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     barbellContainer.style.padding = '5px 0';
     barbellContainer.style.maxWidth = '100%';
 
-    const plateList = calculatePlateBreakdown(platesPerSide);
+    const plateList = calculatePlateBreakdown(weightPerSide);
 
     // --- Left side (largest plates near bar) ---
     plateList.slice().reverse().forEach(plate => {
@@ -128,14 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
     weightsText.style.fontSize = '14px';
     weightsText.style.marginBottom = '5px';
     weightsText.innerHTML = `
-      ${platesPerSide.toFixed(1)} kg per side
+      ${weightPerSide.toFixed(1)} kg (${(weightPerSide * 2.2).toFixed(1)} lbs)  per side
     `;
 
     exerciseDiv.appendChild(barbellContainer);
     exerciseDiv.appendChild(weightsText);
   }
 
-  function renderAllBarbells() {
+  window.renderAllBarbells = function renderAllBarbells() {
     const barbellDivs = document.querySelectorAll('.barbellWorkout');
     barbellDivs.forEach(div => {
       const weight = parseFloat(div.dataset.weight);
