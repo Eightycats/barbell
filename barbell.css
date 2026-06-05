@@ -1,7 +1,8 @@
 body, html {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #c0c0c0;
+    color: #000000;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -13,7 +14,18 @@ body, html {
     padding: 8px 15px;
     font-size: 14px;
     color: #555;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .info-row {

@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     plateDiv.style.fontWeight = 'bold';
     plateDiv.style.textShadow = '0 1px 1px rgba(0,0,0,0.4)';
     plateDiv.style.minWidth = plate.weight < 5 ? '20px' : '30px';
-    plateDiv.style.padding = plate.weight < 5 ? '6px 2px' : '12px 0px';
+    plateDiv.style.padding = plate.weight < 5 ? '12px 2px' : '36px 0px';
     plateDiv.style.fontSize = plate.weight < 5 ? '0.7em' : '0.9em';
     return plateDiv;
   }
