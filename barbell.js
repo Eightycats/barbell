@@ -1,5 +1,48 @@
 // barbell.js
 
+// === PWA: Service Worker ===
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+
+// === PWA: Install Banner ===
+let _pwaPrompt = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.createElement('div');
+  banner.id = 'pwa-install-banner';
+  banner.innerHTML =
+    '<span>Add Barbell Calculator to your home screen</span>' +
+    '<div>' +
+    '<button id="pwa-install-btn">Install</button>' +
+    '<button id="pwa-dismiss-btn">Not now</button>' +
+    '</div>';
+  document.body.appendChild(banner);
+
+  document.getElementById('pwa-install-btn').addEventListener('click', async () => {
+    if (!_pwaPrompt) return;
+    _pwaPrompt.prompt();
+    await _pwaPrompt.userChoice;
+    _pwaPrompt = null;
+    banner.style.display = 'none';
+  });
+
+  document.getElementById('pwa-dismiss-btn').addEventListener('click', () => {
+    sessionStorage.setItem('pwa-install-dismissed', '1');
+    banner.style.display = 'none';
+  });
+});
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _pwaPrompt = e;
+  if (sessionStorage.getItem('pwa-install-dismissed')) return;
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'flex';
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const plateColorMap = {
     25: 'red',

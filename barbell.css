@@ -75,3 +75,39 @@ body, html {
 #barWeightSelection input[type="radio"] {
     margin-right: 5px;
 }
+
+#pwa-install-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    color: #fff;
+    padding: 12px 16px;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9999;
+    font-size: 14px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.35);
+}
+
+#pwa-install-banner button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+#pwa-install-btn {
+    background: #2244dd;
+    color: #fff;
+}
+
+#pwa-dismiss-btn {
+    background: #666;
+    color: #fff;
+}

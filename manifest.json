@@ -1,0 +1,17 @@
+{
+  "name": "Barbell Calculator",
+  "short_name": "Barbell",
+  "description": "Calculate barbell plate configurations for your workout",
+  "start_url": "./plates.html",
+  "display": "standalone",
+  "background_color": "#c0c0c0",
+  "theme_color": "#444444",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
