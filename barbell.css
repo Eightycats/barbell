@@ -76,6 +76,131 @@ body, html {
     margin-right: 5px;
 }
 
+/* Weight Slider */
+.slider-group {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.weight-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.weight-kg-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.weight-big-input {
+    font-size: 44px;
+    font-weight: bold;
+    line-height: 1;
+    color: #111;
+    width: 110px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 4px 8px;
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.weight-big-input::-webkit-outer-spin-button,
+.weight-big-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.weight-big-unit {
+    font-size: 24px;
+    color: #555;
+    font-weight: 500;
+}
+
+.weight-lbs {
+    font-size: 14px;
+    color: #777;
+}
+
+.slider-wrapper {
+    margin: 90px 0 0;
+    padding: 0 20px 8px;
+    box-sizing: border-box;
+}
+
+.slider-ticks {
+    position: relative;
+    width: 100%;
+    height: 20px;
+}
+
+.slider-tick {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tick-mark {
+    width: 1px;
+    height: 6px;
+    background-color: #aaa;
+}
+
+.tick-label {
+    font-size: 9px;
+    color: #777;
+    margin-top: 2px;
+    line-height: 1;
+}
+
+#weightSlider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, #444 var(--fill-pct, 40%), #ddd var(--fill-pct, 40%));
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    margin: 0 0 8px;
+}
+
+#weightSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+}
+
+#weightSlider:active::-webkit-slider-thumb {
+    transform: scale(1.15);
+}
+
+#weightSlider::-moz-range-thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+
 #pwa-install-banner {
     display: none;
     position: fixed;

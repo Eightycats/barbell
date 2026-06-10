@@ -39,48 +39,101 @@
     
 
     <div class="info-row">
-        <div class="info-center form-group">
-            <label for="totalWeight">Total Weight (kg):</label><br>
-            <input type="number" id="totalWeight" value="100" min="0" max="250" step="1">
-        </div>    
-    </div>
-        
-
-    <div id="totalWeightLbs" style="text-align: center; font-size: 14px; color: black; margin-top: 8px;">
-      220.5 lbs
+        <div class="info-center slider-group">
+            <div class="weight-header">
+                <div class="weight-kg-row">
+                    <input type="number" id="totalWeight" class="weight-big-input" value="100" min="0" max="250" step="1">
+                    <span class="weight-big-unit">kg</span>
+                </div>
+                <span class="weight-lbs" id="totalWeightLbs">(220.5 lbs)</span>
+            </div>
+        </div>
     </div>
 
     <div class="barbell-display">
         <div class="barbellWorkout" data-weight="100"></div>
     </div>
 
+    <div class="slider-wrapper">
+        <input type="range" id="weightSlider" min="0" max="250" step="1" value="100">
+        <div id="sliderTicks" class="slider-ticks"></div>
+    </div>
+
 <script>
+  const slider = document.getElementById('weightSlider');
+  const numberInput = document.getElementById('totalWeight');
+
   function updateBarbellDisplay() {
-    const total = parseFloat(document.getElementById('totalWeight').value);
+    const total = parseFloat(numberInput.value);
     const bar = document.querySelector('input[name="barWeight"]:checked');
     const display = document.querySelector('.barbellWorkout');
 
-    if (!bar || isNaN(total) || total <= 0) {
-        return;
-    }
+    if (!bar || isNaN(total) || total <= 0) return;
 
     display.dataset.weight = total;
-    if (typeof renderAllBarbells === 'function') {
-      renderAllBarbells();
-    }
+    if (typeof renderAllBarbells === 'function') renderAllBarbells();
 
-    const lbs = total * 2.2046;
-    document.getElementById('totalWeightLbs').textContent = lbs.toFixed(1) + ' lbs';
+    document.getElementById('totalWeightLbs').textContent = '(' + (total * 2.2046).toFixed(1) + ' lbs)';
+    updateSliderFill(total);
   }
 
-  // Watch for changes in input or bar weight radio buttons
-  document.getElementById('totalWeight').addEventListener('input', updateBarbellDisplay);
+  function updateSliderFill(value) {
+    const pct = (Math.min(value, 250) / 250) * 100;
+    slider.style.setProperty('--fill-pct', pct + '%');
+  }
+
+  function setWeight(value) {
+    numberInput.value = value;
+    slider.value = value;
+    updateBarbellDisplay();
+  }
+
+  // Live update while dragging
+  slider.addEventListener('input', () => setWeight(slider.value));
+
+  // Snap to nearest 5kg on release
+  slider.addEventListener('change', () => {
+    const snapped = Math.round(parseFloat(slider.value) / 5) * 5;
+    setWeight(snapped);
+  });
+
+  // Number input: sync to slider
+  numberInput.addEventListener('input', () => {
+    slider.value = numberInput.value;
+    updateBarbellDisplay();
+  });
 
   document.querySelectorAll('input[name="barWeight"]').forEach(radio => {
     radio.addEventListener('change', updateBarbellDisplay);
   });
 
-  // Initial render
+  // Generate slider tick marks
+  (function() {
+    const ticksContainer = document.getElementById('sliderTicks');
+    const sliderMax = 250;
+    const thumbPx = 36;
+    const tickSet = new Set();
+    for (let v = 0; v <= sliderMax; v += 20) tickSet.add(v);
+    for (let v = 0; v <= sliderMax; v += 50) tickSet.add(v);
+    const tickValues = [...tickSet].sort((a, b) => a - b);
+    tickValues.forEach(v => {
+      const pct = v / sliderMax;
+      const tick = document.createElement('div');
+      tick.className = 'slider-tick';
+      tick.style.left = `calc(${pct} * (100% - ${thumbPx}px) + ${thumbPx / 2}px)`;
+      const mark = document.createElement('div');
+      mark.className = 'tick-mark';
+      tick.appendChild(mark);
+      if (v % 50 === 0) {
+        const label = document.createElement('span');
+        label.className = 'tick-label';
+        label.textContent = v;
+        tick.appendChild(label);
+      }
+      ticksContainer.appendChild(tick);
+    });
+  })();
+
   updateBarbellDisplay();
 </script>
 
