@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     barbellContainer.style.justifyContent = 'center';
     barbellContainer.style.flexWrap = 'nowrap';
     barbellContainer.style.margin = '0 auto';
-    barbellContainer.style.overflowX = 'hidden';
-    barbellContainer.style.padding = '5px 0';
+    barbellContainer.style.overflow = 'hidden';
+    barbellContainer.style.height = '100px';
     barbellContainer.style.maxWidth = '100%';
 
     const plateList = calculatePlateBreakdown(weightPerSide);
