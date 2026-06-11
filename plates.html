@@ -92,11 +92,7 @@
   // Live update while dragging
   slider.addEventListener('input', () => setWeight(slider.value));
 
-  // Snap to nearest 5kg on release
-  slider.addEventListener('change', () => {
-    const snapped = Math.round(parseFloat(slider.value) / 5) * 5;
-    setWeight(snapped);
-  });
+  slider.addEventListener('change', () => setWeight(slider.value));
 
   // Number input: sync to slider
   numberInput.addEventListener('input', () => {
