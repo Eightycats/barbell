@@ -56,8 +56,14 @@
     </div>
 
     <div class="slider-wrapper">
-        <input type="range" id="weightSlider" min="0" max="250" step="1" value="100">
-        <div id="sliderTicks" class="slider-ticks"></div>
+        <div class="slider-row">
+            <button class="slider-adj-btn" id="decrementBtn">-1</button>
+            <div class="slider-track">
+                <input type="range" id="weightSlider" min="0" max="250" step="1" value="100">
+                <div id="sliderTicks" class="slider-ticks"></div>
+            </div>
+            <button class="slider-adj-btn" id="incrementBtn">+1</button>
+        </div>
     </div>
 
 <script>
@@ -88,6 +94,14 @@
     slider.value = value;
     updateBarbellDisplay();
   }
+
+  document.getElementById('decrementBtn').addEventListener('click', () => {
+    setWeight(Math.max(0, parseFloat(numberInput.value) - 1));
+  });
+
+  document.getElementById('incrementBtn').addEventListener('click', () => {
+    setWeight(Math.min(250, parseFloat(numberInput.value) + 1));
+  });
 
   // Live update while dragging
   slider.addEventListener('input', () => setWeight(slider.value));
