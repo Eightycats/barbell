@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barbell-v3';
+const CACHE_NAME = 'barbell-v4';
 const ASSETS = [
   './',
   './plates.html',

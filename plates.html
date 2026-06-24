@@ -85,18 +85,26 @@
   }
 
   function updateSliderFill(value) {
-    const pct = (Math.min(value, 250) / 250) * 100;
+    const sliderMin = parseFloat(slider.min);
+    const pct = ((Math.min(value, 250) - sliderMin) / (250 - sliderMin)) * 100;
     slider.style.setProperty('--fill-pct', pct + '%');
   }
 
+  function getBarWeight() {
+    const bar = document.querySelector('input[name="barWeight"]:checked');
+    return bar ? parseFloat(bar.value) : 0;
+  }
+
   function setWeight(value) {
-    numberInput.value = value;
-    slider.value = value;
+    const minWeight = getBarWeight();
+    const clamped = Math.max(minWeight, value);
+    numberInput.value = clamped;
+    slider.value = clamped;
     updateBarbellDisplay();
   }
 
   document.getElementById('decrementBtn').addEventListener('click', () => {
-    setWeight(Math.max(0, parseFloat(numberInput.value) - 1));
+    setWeight(parseFloat(numberInput.value) - 1);
   });
 
   document.getElementById('incrementBtn').addEventListener('click', () => {
@@ -110,32 +118,48 @@
 
   // Number input: sync to slider
   numberInput.addEventListener('input', () => {
-    slider.value = numberInput.value;
+    const minWeight = getBarWeight();
+    const clamped = Math.max(minWeight, parseFloat(numberInput.value) || 0);
+    slider.value = clamped;
+    numberInput.value = clamped;
     updateBarbellDisplay();
   });
 
   document.querySelectorAll('input[name="barWeight"]').forEach(radio => {
-    radio.addEventListener('change', updateBarbellDisplay);
+    radio.addEventListener('change', () => {
+      const minWeight = parseFloat(radio.value);
+      slider.min = minWeight;
+      numberInput.min = minWeight;
+      generateTicks();
+      if (parseFloat(numberInput.value) < minWeight) {
+        setWeight(minWeight);
+      } else {
+        updateBarbellDisplay();
+      }
+    });
   });
 
-  // Generate slider tick marks
-  (function() {
+  // Generate slider tick marks relative to current slider min
+  function generateTicks() {
     const ticksContainer = document.getElementById('sliderTicks');
+    ticksContainer.innerHTML = '';
+    const sliderMin = parseFloat(slider.min);
     const sliderMax = 250;
     const thumbPx = 36;
     const tickSet = new Set();
-    for (let v = 0; v <= sliderMax; v += 20) tickSet.add(v);
-    for (let v = 0; v <= sliderMax; v += 50) tickSet.add(v);
+    tickSet.add(sliderMin);
+    for (let v = 0; v <= sliderMax; v += 20) { if (v >= sliderMin) tickSet.add(v); }
+    for (let v = 0; v <= sliderMax; v += 50) { if (v >= sliderMin) tickSet.add(v); }
     const tickValues = [...tickSet].sort((a, b) => a - b);
     tickValues.forEach(v => {
-      const pct = v / sliderMax;
+      const pct = (v - sliderMin) / (sliderMax - sliderMin);
       const tick = document.createElement('div');
       tick.className = 'slider-tick';
       tick.style.left = `calc(${pct} * (100% - ${thumbPx}px) + ${thumbPx / 2}px)`;
       const mark = document.createElement('div');
       mark.className = 'tick-mark';
       tick.appendChild(mark);
-      if (v % 50 === 0) {
+      if (v % 50 === 0 || v === sliderMin) {
         const label = document.createElement('span');
         label.className = 'tick-label';
         label.textContent = v;
@@ -143,7 +167,18 @@
       }
       ticksContainer.appendChild(tick);
     });
+  }
+  // Initialize slider min to match default selected bar
+  (function() {
+    const defaultBar = document.querySelector('input[name="barWeight"]:checked');
+    if (defaultBar) {
+      const minWeight = parseFloat(defaultBar.value);
+      slider.min = minWeight;
+      numberInput.min = minWeight;
+    }
   })();
+
+  generateTicks();
 
   updateBarbellDisplay();
 
